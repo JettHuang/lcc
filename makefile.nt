@@ -161,7 +161,8 @@ $Bhideset$O:	cpp/hideset.c;	$(CC) $(CFLAGS) -c -Icpp -Fo$@ cpp/hideset.c
 $Bgetopt$O:	cpp/getopt.c;	$(CC) $(CFLAGS) -c -Icpp -Fo$@ cpp/getopt.c
 $Bunix$O:	cpp/unix.c;	$(CC) $(CFLAGS) -c -Icpp -Fo$@ cpp/unix.c
 
-test:	$T8q.s \
+test: Tdir \
+	$T8q.s \
 	$Tarray.s \
 	$Tcf.s \
 	$Tcq.s \
@@ -179,7 +180,10 @@ test:	$T8q.s \
 	$Tswitch.s \
 	$Twf1.s \
 	$Tyacc.s
-
+	
+Tdir:
+	mkdir $T
+	
 $T8q.s:	tst\8q.c tst\8q.0 all
 	-$C -S -Wf-errout=$T8q.2 -o $T8q.s tst/8q.c
 	fc $(TARGET)\tst\8q.sbk $T8q.s
