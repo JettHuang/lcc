@@ -5,10 +5,10 @@ TEMPDIR=\\temp
 A=.lib
 O=.obj
 E=.exe
-CC=cl -nologo
-CFLAGS=-DWIN32 -Zi -MLd -Fd$(BUILDDIR)^\
+CC=cl -nologo 
+CFLAGS=-DWIN32 -Zi -Fd$(BUILDDIR)^\
 LD=cl -nologo
-LDFLAGS=-Zi -MLd -Fd$(BUILDDIR)^\
+LDFLAGS=-Zi -Fd$(BUILDDIR)^\
 TSTDIR=$(BUILDDIR)\$(TARGET)\tst
 B=$(BUILDDIR)^\
 T=$(TSTDIR)^\
@@ -62,7 +62,7 @@ RCCOBJS=$Balloc$O \
 	$Bx86$O \
 	$Bx86linux$O
 
-$Brcc$E::	$Bmain$O $Blibrcc$A $(EXTRAOBJS)
+$Brcc$E: $Bmain$O $Blibrcc$A $(EXTRAOBJS)
 		$(LD) $(LDFLAGS) -Fe$@ $Bmain$O $(EXTRAOBJS) $Blibrcc$A $(EXTRALIBS)
 
 $Blibrcc$A:	$(RCCOBJS)
