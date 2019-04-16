@@ -48,7 +48,10 @@ extern int suffix(char *, char *[], int);
 extern char *tempname(char *);
 
 extern int access(char *, int);
+
+#ifndef WIN32	
 extern int getpid(void);
+#endif
 
 extern char *cpp[], *include[], *com[], *as[],*ld[], inputs[], *suffixes[];
 extern int option(char *);
