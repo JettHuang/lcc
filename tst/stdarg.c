@@ -4,7 +4,25 @@ struct node { int a[4]; } x = {1,2,3,4};
 
 print(char *fmt, ...);
 
+#define FILENAME 	9 "a.c"
+#line FILENAME
+
+const char *str = "aaa"
+			"bbb";
+
+const int array??(10??) = { 90\
+000 };
+
+# 
+#pragma pack(4)
+
+#define HUANG(x)	const char* abc_str = #x;
+
+HUANG(jett huang, arvin)
+
 main() {
+	int a = 0x0F;
+	
 	print("test 1\n");
 	print("test %s\n", "2");
 	print("test %d%c", 3, '\n');

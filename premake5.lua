@@ -24,7 +24,7 @@ workspace "LCCAll"
     filter {}
 
     targetdir("build/bin")  
-    objdir("Build/Obj/%{prj.name}/%{cfg.longname}")
+    objdir("Build/Obj/%{prj.name}/%{cfg.buildcfg}")
     
 -- project rcc
 project "rcc"
