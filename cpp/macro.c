@@ -124,7 +124,26 @@ doadefine(Tokenrow *trp, int type)
 syntax:
 	error(FATAL, "Illegal -D or -U argument %r", trp);
 }
-			
+		
+void print_token(Token* tk)
+{
+	for (int i=0; i<tk->len; i++)
+	{
+		putchar(tk->t[i]);
+	}
+}
+
+void print_tokenrow(Tokenrow* trp)
+{
+	Token* tp;
+	for (tp=trp->tp; tp<trp->lp; ++tp)
+	{
+		print_token(tp); printf("  ");
+	}
+
+	printf("\n");
+}
+
 /*
  * Do macro expansion in a row of tokens.
  * Flag is NULL if more input can be gathered.
@@ -134,6 +153,9 @@ expandrow(Tokenrow *trp, char *flag)
 {
 	Token *tp;
 	Nlist *np;
+
+	printf("expandrow >\n");
+	print_tokenrow(trp);
 
 	if (flag)
 		setsource(flag, NULL, "");
@@ -204,6 +226,9 @@ expand(Tokenrow *trp, Nlist *np)
 			dofree(atr[i]->bp);
 			dofree(atr[i]);
 		}
+
+		printf("expand substargs: \n");
+		print_tokenrow(&ntr);
 	}
 	doconcat(&ntr);				/* execute ## operators */
 	hs = newhideset(trp->tp->hideset, np);

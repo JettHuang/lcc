@@ -25,7 +25,8 @@ workspace "LCCAll"
 
     targetdir("build/bin")  
     objdir("Build/Obj/%{prj.name}/%{cfg.buildcfg}")
-    
+    debugdir ("build/..");
+	
 -- project rcc
 project "rcc"
     kind "ConsoleApp"
@@ -34,6 +35,8 @@ project "rcc"
     files {
         "src/main.c"
     }
+	
+	debugargs("-target=x86/win32 tst/wf1.c");
 
 -- project librcc
 project "librcc"
